@@ -31,6 +31,7 @@ module.exports = class ApiClient {
         this.UserPersonalWallet = (new RestInterface(this, null, '/users/{0}/get-personal-wallet'));
         this.UserWallets = (new RestInterface(this, null, null,null,'/users/{0}/wallets'));
         this.UsersWalletsContributed = (new RestInterface(this, null, null,null,'/users/{0}/rpc-get-wallets-contributed'));
+        this.UserCards = (new RestInterface(this, null, null,null,'/users/{0}/cards'));
 
 
         this.Wallets = (new RestInterface(this, '/wallets', '/wallets/{0}', '/wallets/{0}', '/wallets'));
@@ -38,7 +39,8 @@ module.exports = class ApiClient {
 
         this.Payins = {
             BankWire: new RestInterface(this, '/payins/bankwire'),
-            CC: new RestInterface(this, '/payins/cc')
+            CC: new RestInterface(this, '/payins/cc'),
+            CCDirect: new RestInterface(this, '/payins/cc-direct')
         };
 
         this.Payouts = {
@@ -50,6 +52,9 @@ module.exports = class ApiClient {
         this.Transfers = new RestInterface(this, '/transfers');
 
         this.BankAccounts = new RestInterface(this, '/bank-accounts');
+
+        this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}');
+
 
     };
 
