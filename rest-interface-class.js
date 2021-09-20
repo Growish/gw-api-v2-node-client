@@ -31,7 +31,7 @@ module.exports = class RestInterface {
     }
 
     async update(urlParams = [], payload = {}) {
-        return await this.rootContext.makeRequest(prepareURL(this.readEndpoint, null), 'PUT', payload, this.isPublic.update);
+        return await this.rootContext.makeRequest(prepareURL(this.editEndpoint || this.readEndpoint, null), 'PUT', payload, this.isPublic.update);
     }
 
     async delete(urlParams) {
