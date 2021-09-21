@@ -6,6 +6,22 @@ const baseURLDev = "https://apidev.growish.com/v2/{{domain}}";
 const baseURLProd = "https://api.growish.com/v2/{{domain}}";
 
 
+class CustomValidationError extends Error {
+    constructor(data) {
+        super(data);
+        this.name = "CustomValidationError";
+        this.data = data;
+    }
+}
+
+class ForbiddenError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ForbiddenError";
+        this.message = message;
+    }
+}
+
 module.exports = class ApiClient {
 
     constructor(env, domain, baUser, baPass, options) {
@@ -93,7 +109,16 @@ module.exports = class ApiClient {
 
             this.runningRequests--;
 
-            return Promise.reject(error.response ? error.response.data : error);
+            if(!error.response)
+                return Promise.reject(error);
+
+            if(error.response.status === 403)
+                return Promise.reject(new ForbiddenError(error.response.data.message));
+
+            if(error.response.status === 400)
+                return Promise.reject(new CustomValidationError(error.response.data.data));
+
+            return Promise.reject(error.response);
         }
 
     };
