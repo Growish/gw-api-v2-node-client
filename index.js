@@ -112,11 +112,15 @@ module.exports = class ApiClient {
             if(!error.response)
                 return Promise.reject(error);
 
+            if(error.response.status === 400)
+                return Promise.reject(new CustomValidationError(error.response.data.data));
+
             if(error.response.status === 403)
                 return Promise.reject(new ForbiddenError(error.response.data.message));
 
-            if(error.response.status === 400)
-                return Promise.reject(new CustomValidationError(error.response.data.data));
+            if(error.response.status === 404)
+                return Promise.resolve(null);
+
 
             return Promise.reject(error.response);
         }
