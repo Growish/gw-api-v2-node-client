@@ -63,7 +63,7 @@ module.exports = class ApiClient {
             BankWires: new RestInterface(this, '/payouts/bankwire')
         };
 
-        this.Transactions = new RestInterface(this, null, '/transactions');
+        this.Transactions = new RestInterface(this, null, '/transactions/{0}');
 
         this.Transfers = new RestInterface(this, '/transfers');
 
