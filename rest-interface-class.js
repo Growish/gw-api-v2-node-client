@@ -10,6 +10,8 @@ module.exports = class RestInterface {
         this.readEndpoint = readEndpoint;
         this.editEndpoint = editEndpoint;
         this.listEndpoint = listEndpoint;
+        this.deleteEnpoint = deleteEndpoint;
+
     }
 
     setPublic(options) {
@@ -35,7 +37,7 @@ module.exports = class RestInterface {
     }
 
     async delete(urlParams) {
-        return await this.rootContext.makeRequest(prepareURL(this.createEndpoint, urlParams), 'DELETE', null, this.isPublic.delete);
+        return await this.rootContext.makeRequest(prepareURL(this.deleteEnpoint, urlParams), 'DELETE', null, this.isPublic.delete);
     }
 };
 

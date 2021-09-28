@@ -67,10 +67,9 @@ module.exports = class ApiClient {
 
         this.Transfers = new RestInterface(this, '/transfers');
 
-        this.BankAccounts = new RestInterface(this, '/bank-accounts');
+        this.BankAccounts = new RestInterface(this, '/bank-accounts', '/bank-accounts/{0}');
 
-        this.Mandates = new RestInterface(this, '/mandates', '/mandates/{0}');
-        this.MandateRevoke = new RestInterface(this, '/mandates/{0}/revoke');
+        this.Mandates = new RestInterface(this, '/mandates', '/mandates/{0}', null, null, '/mandates/{0}/revoke');
 
         this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}');
 
