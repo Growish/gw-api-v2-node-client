@@ -56,7 +56,8 @@ module.exports = class ApiClient {
         this.Payins = {
             BankWire: new RestInterface(this, '/payins/bankwire'),
             CC: new RestInterface(this, '/payins/cc'),
-            CCDirect: new RestInterface(this, '/payins/cc-direct')
+            CCDirect: new RestInterface(this, '/payins/cc-direct'),
+            DirectDebit: new RestInterface(this, '/payins/direct-debit')
         };
 
         this.Payouts = {
