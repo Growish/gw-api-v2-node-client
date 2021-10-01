@@ -48,7 +48,10 @@ module.exports = class ApiClient {
         this.UserWallets = (new RestInterface(this, null, null,null,'/users/{0}/wallets'));
         this.UsersWalletsContributed = (new RestInterface(this, null, null,null,'/users/{0}/rpc-get-wallets-contributed'));
         this.UserCards = (new RestInterface(this, null, null,null,'/users/{0}/cards'));
-
+        this.UserKYC = {
+            Send: new RestInterface(this, '/rpc-send-user-identity-proof/{0}'),
+            Get: new RestInterface(this, null, '/rpc-get-user-identity-proof/{0}')
+        };
 
         this.Wallets = (new RestInterface(this, '/wallets', '/wallets/{0}', '/wallets/{0}', '/wallets'));
         this.WalletStatement = (new RestInterface(this, null, '/wallets/{0}/statement'));
