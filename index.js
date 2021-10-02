@@ -50,6 +50,7 @@ module.exports = class ApiClient {
         this.UserCards = (new RestInterface(this, null, null,null,'/users/{0}/cards'));
         this.UserKYC = {
             Send: new RestInterface(this, '/rpc-send-user-identity-proof/{0}'),
+            SendByLink: new RestInterface(this, '/rpc-send-user-identity-proof-by-link/{0}'),
             Get: new RestInterface(this, null, '/rpc-get-user-identity-proof/{0}')
         };
 
