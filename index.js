@@ -35,7 +35,7 @@ module.exports = class ApiClient {
 
         this.options = options;
 
-        this.baseURL = (env === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain);
+        this.baseURL = (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain);
 
 
         //API METHODS
