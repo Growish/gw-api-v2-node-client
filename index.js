@@ -78,6 +78,9 @@ module.exports = class ApiClient {
 
         this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}');
 
+        this.Tools = {
+            CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee')
+        }
 
     };
 
