@@ -22,9 +22,16 @@ class ForbiddenError extends Error {
     }
 }
 
+const debug = (message, payload) => {
+    if(payload)
+        console.log("[GWAPICLIENT - " + new Date().getTime() + " ]: " + message, payload);
+    else
+        console.log("[GWAPICLIENT - " + new Date().getTime() + " ]: " + message);
+}
+
 module.exports = class ApiClient {
 
-    constructor(env, domain, baUser, baPass, options) {
+    constructor(env, domain, baUser, baPass, options = {}) {
 
         this.runningRequests = 0;
 
@@ -33,7 +40,7 @@ module.exports = class ApiClient {
             password: baPass
         };
 
-        this.options = options;
+        this.options = {debug: false, ...options};
 
         this.baseURL = (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain);
 
@@ -106,7 +113,13 @@ module.exports = class ApiClient {
             if(!isPublic)
                 axiosRequestPayload.auth = this.auth;
 
+            if(me.options.debug)
+                debug('New API query', { axiosRequestPayload });
+
             const response = await axios(axiosRequestPayload);
+
+            if(me.options.debug)
+                debug('Axios response', { responseData: response.data });
 
             this.runningRequests--;
 
