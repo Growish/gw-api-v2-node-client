@@ -20,8 +20,11 @@ module.exports = class RestInterface {
     }
 
 
-    async create(payload = {}) {
-        return await this.rootContext.makeRequest(this.createEndpoint, 'POST', payload, this.isPublic.create);
+    async create() {
+        if(arguments.length === 1)
+            return await this.rootContext.makeRequest(this.createEndpoint, 'POST', arguments[0], this.isPublic.create);
+        else
+            return await this.rootContext.makeRequest(prepareURL(this.createEndpoint, arguments[0]), 'POST', arguments[1], this.isPublic.create);
     }
 
     async read(urlParams = [], queryParams = null) {
