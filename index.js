@@ -56,10 +56,18 @@ module.exports = class ApiClient {
         this.UsersWalletsContributed = (new RestInterface(this, null, null,null,'/users/{0}/rpc-get-wallets-contributed'));
         this.UserCards = (new RestInterface(this, null, null,null,'/users/{0}/cards'));
         this.UserKYC = {
+            //**** Legacy methods
             Send: new RestInterface(this, '/rpc-send-user-identity-proof/{0}'),
             SendByLink: new RestInterface(this, '/rpc-send-user-identity-proof-by-link'),
-            Get: new RestInterface(this, null, '/rpc-get-user-identity-proof/{0}')
+            Get: new RestInterface(this, null, '/rpc-get-user-identity-proof/{0}'),
+            //**** New methods
+            SendDocumentByLink: new RestInterface(this, '/rpc-send-kyb-document-by-link'),
+            Documents: new RestInterface(this, null, null, null, '/users/{0}/kyc-documents'),
+            Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
         };
+        this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}');
+        this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
+        this.SendUBODeclaration = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/rpc-send');
 
         this.Wallets = (new RestInterface(this, '/wallets', '/wallets/{0}', '/wallets/{0}', '/wallets'));
         this.WalletStatement = (new RestInterface(this, null, '/wallets/{0}/statement'));
