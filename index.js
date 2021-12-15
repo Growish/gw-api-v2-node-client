@@ -114,7 +114,7 @@ module.exports = class ApiClient {
                 headers: me._getHeaders(!isPublic),
                 url,
                 method,
-                data: payload,
+                data: payload ? payload : {},
                 timeout: 15000
             };
 
