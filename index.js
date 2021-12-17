@@ -65,7 +65,7 @@ module.exports = class ApiClient {
             Documents: new RestInterface(this, null, null, null, '/users/{0}/kyc-documents'),
             Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
         };
-        this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}');
+        this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}', null, '/users/{0}/ubo-declarations');
         this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
         this.SendUBODeclaration = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/rpc-send');
 
