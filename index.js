@@ -51,6 +51,7 @@ module.exports = class ApiClient {
         this.Domain = (new RestInterface(this, null, '/'));
 
         this.Users = (new RestInterface(this, '/users', '/users/{0}', '/users/{0}', '/users'));
+        this.UsersByEmail = new RestInterface(this, null, '/rpc-get-user-by-email');
         this.UserPersonalWallet = (new RestInterface(this, null, '/users/{0}/get-personal-wallet'));
         this.UserWallets = (new RestInterface(this, null, null,null,'/users/{0}/wallets'));
         this.UsersWalletsContributed = (new RestInterface(this, null, null,null,'/users/{0}/rpc-get-wallets-contributed'));
@@ -64,6 +65,9 @@ module.exports = class ApiClient {
             SendDocumentByLink: new RestInterface(this, '/rpc-send-kyb-document-by-link'),
             Documents: new RestInterface(this, null, null, null, '/users/{0}/kyc-documents'),
             Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
+        };
+        this.UserLiveness = {
+            start: new RestInterface(this, '/rpc-start-liveness/{0}')
         };
         this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}', null, '/users/{0}/ubo-declarations');
         this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
