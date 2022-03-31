@@ -91,7 +91,7 @@ module.exports = class ApiClient {
 
         this.Mandates = new RestInterface(this, '/mandates', '/mandates/{0}', null, null, '/mandates/{0}/revoke');
 
-        this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}');
+        this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}', null, '/cards/{0}/deactivate');
 
         this.Tools = {
             CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee')
