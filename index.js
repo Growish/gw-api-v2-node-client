@@ -98,7 +98,8 @@ module.exports = class ApiClient {
         this.CardTokenization = new RestInterface(this, '/cards', null, '/cards/{0}', null, '/cards/{0}/deactivate');
 
         this.Tools = {
-            CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee')
+            CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee'),
+            ShorUrl: new RestInterface(this, "/tools/rpc-short-url")
         }
 
     };
