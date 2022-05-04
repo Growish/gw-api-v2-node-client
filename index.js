@@ -99,7 +99,8 @@ module.exports = class ApiClient {
 
         this.Tools = {
             CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee'),
-            ShorUrl: new RestInterface(this, "/tools/rpc-short-url")
+            ShorUrl: new RestInterface(this, "/tools/rpc-short-url"),
+            SimulateTreezorPayin: new RestInterface(this, '/tools/simulate-treezor-payin')
         }
 
     };
