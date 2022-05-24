@@ -40,7 +40,7 @@ module.exports = class ApiClient {
             password: baPass
         };
 
-        this.options = {debug: false, ...options};
+        this.options = {debug: false, fullResponse: true, ...options};
 
         this.baseURL = (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain);
 
@@ -106,7 +106,7 @@ module.exports = class ApiClient {
     };
 
 
-    async makeRequest(endpoint, method, payload, isPublic) {
+    async makeRequest(endpoint, method, payload, isPublic, forceFullResponse) {
 
         const me = this;
 
@@ -141,7 +141,8 @@ module.exports = class ApiClient {
                 return Promise.reject();
 
 
-            return response.data;
+            return me.options.fullResponse || forceFullResponse ? response.data : response.data.data;
+
         } catch (error) {
 
             this.runningRequests--;

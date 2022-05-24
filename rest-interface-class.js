@@ -6,6 +6,8 @@ module.exports = class RestInterface {
 
         this.isPublic = { create: false, read: false, edit: false, list: false, delete: false };
 
+        this.forceFullResponse = false;
+
         this.createEndpoint = createEndpoint;
         this.readEndpoint = readEndpoint;
         this.editEndpoint = editEndpoint;
@@ -19,28 +21,55 @@ module.exports = class RestInterface {
         return this;
     }
 
+    setForceFullResponse() {
+        this.forceFullResponse = true;
+        return this;
+    }
 
     async create() {
+
+        let response;
+
         if(arguments.length === 1)
-            return await this.rootContext.makeRequest(this.createEndpoint, 'POST', arguments[0], this.isPublic.create);
+            response = await this.rootContext.makeRequest(this.createEndpoint, 'POST', arguments[0], this.isPublic.create, this.forceFullResponse);
         else
-            return await this.rootContext.makeRequest(prepareURL(this.createEndpoint, arguments[0]), 'POST', arguments[1], this.isPublic.create);
+            response = await this.rootContext.makeRequest(prepareURL(this.createEndpoint, arguments[0]), 'POST', arguments[1], this.isPublic.create, this.forceFullResponse);
+
+        this.forceFullResponse = false;
+        return response;
+
     }
 
     async read(urlParams = [], queryParams = null) {
-        return await this.rootContext.makeRequest(prepareURL(this.readEndpoint, urlParams, queryParams), 'GET', null, this.isPublic.read);
+
+        const response = await this.rootContext.makeRequest(prepareURL(this.readEndpoint, urlParams, queryParams), 'GET', null, this.isPublic.read, this.forceFullResponse);
+        this.forceFullResponse = false;
+        return response;
+
     }
 
     async list(urlParams = [], queryParams = null) {
-        return await this.rootContext.makeRequest(prepareURL(this.listEndpoint, urlParams, queryParams), 'GET', null, this.isPublic.list);
+
+        const response = await this.rootContext.makeRequest(prepareURL(this.listEndpoint, urlParams, queryParams), 'GET', null, this.isPublic.list, this.forceFullResponse);
+        this.forceFullResponse = false;
+        return response;
+
     }
 
     async update(urlParams = [], payload = {}) {
-        return await this.rootContext.makeRequest(prepareURL(this.editEndpoint || this.readEndpoint, urlParams), 'PUT', payload, this.isPublic.update);
+
+        const response = await this.rootContext.makeRequest(prepareURL(this.editEndpoint || this.readEndpoint, urlParams), 'PUT', payload, this.isPublic.update, this.forceFullResponse);
+        this.forceFullResponse = false;
+        return response;
+
     }
 
     async delete(urlParams) {
-        return await this.rootContext.makeRequest(prepareURL(this.deleteEnpoint, urlParams), 'DELETE', null, this.isPublic.delete);
+
+        const response = await this.rootContext.makeRequest(prepareURL(this.deleteEnpoint, urlParams), 'DELETE', null, this.isPublic.delete, this.forceFullResponse);
+        this.forceFullResponse = false;
+        return response;
+
     }
 };
 
