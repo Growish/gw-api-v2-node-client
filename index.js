@@ -40,9 +40,11 @@ module.exports = class ApiClient {
             password: baPass
         };
 
-        this.options = {debug: false, fullResponse: true, ...options};
-
-        this.baseURL = (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain);
+        this.options = {
+            debug: false,
+            fullResponse: true,
+            baseURL: (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain),
+            ...options};
 
 
         //API METHODS
@@ -115,7 +117,7 @@ module.exports = class ApiClient {
 
         try {
 
-            const url = me.baseURL + endpoint;
+            const url = me.options.baseURL + endpoint;
 
             const axiosRequestPayload = {
                 headers: me._getHeaders(!isPublic),
