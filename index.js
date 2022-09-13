@@ -87,7 +87,8 @@ module.exports = class ApiClient {
         };
 
         this.Payouts = {
-            BankWires: new RestInterface(this, '/payouts/bankwire')
+            BankWires: new RestInterface(this, '/payouts/bankwire'),
+            Generic: new RestInterface(this, '/payouts/generic')
         };
 
         this.Transactions = new RestInterface(this, null, '/transactions/{0}');
