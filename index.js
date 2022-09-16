@@ -76,6 +76,7 @@ module.exports = class ApiClient {
         this.SendUBODeclaration = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/rpc-send');
 
         this.Wallets = (new RestInterface(this, '/wallets', '/wallets/{0}', '/wallets/{0}', '/wallets'));
+        this.WalletVirtualIban = new RestInterface(this, '/wallets/{0}/rpc-create-virtual-iban');
         this.WalletStatement = (new RestInterface(this, null, '/wallets/{0}/statement'));
 
         this.Payins = {
