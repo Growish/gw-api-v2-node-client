@@ -52,7 +52,7 @@ module.exports = class ApiClient {
 
         this.Domain = (new RestInterface(this, null, '/'));
 
-        this.Users = (new RestInterface(this, '/users', '/users/{0}', '/users/{0}', '/users', '/users/{0}'));
+        this.Users = (new RestInterface(this, '/users', '/users/{0}', '/users/{0}', '/users'));
         this.UsersByEmail = new RestInterface(this, null, '/rpc-get-user-by-email');
         this.UserPersonalWallet = (new RestInterface(this, null, '/users/{0}/get-personal-wallet'));
         this.UserWallets = (new RestInterface(this, null, null,null,'/users/{0}/wallets'));
@@ -71,6 +71,10 @@ module.exports = class ApiClient {
         this.UserLiveness = {
             start: new RestInterface(this, '/rpc-start-liveness/{0}')
         };
+        this.UserState = {
+            lock: new RestInterface(this, '/users/{0}/lock'),
+            suspend: new RestInterface(this, '/users/{0}/suspend')
+        }
         this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}', null, '/users/{0}/ubo-declarations');
         this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
         this.SendUBODeclaration = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/rpc-send');
