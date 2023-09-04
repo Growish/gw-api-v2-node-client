@@ -98,6 +98,8 @@ module.exports = class ApiClient {
 
         this.Transactions = new RestInterface(this, null, '/transactions/{0}');
 
+        this.Refunds = new RestInterface(this, '/transactions/{0}/refund');
+
         this.Transfers = new RestInterface(this, '/transfers');
 
         this.BankAccounts = new RestInterface(this, '/bank-accounts', '/bank-accounts/{0}');
