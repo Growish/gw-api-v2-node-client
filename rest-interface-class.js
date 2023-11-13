@@ -35,7 +35,7 @@ module.exports = class RestInterface {
         else if (arguments.length === 2)
             response = await this.rootContext.makeRequest(prepareURL(this.createEndpoint, arguments[0]), 'POST', arguments[1], this.isPublic.create, this.forceFullResponse);
         else
-            response = await this.rootContext.makeRequest(prepareURL(this.createEndpoint, [arguments[0], arguments[2]]), 'POST', arguments[1], this.isPublic.create, this.forceFullResponse);
+            response = await this.rootContext.makeRequest(prepareURL(this.createEndpoint, arguments[0], arguments[2]), 'POST', arguments[1], this.isPublic.create, this.forceFullResponse);
 
         this.forceFullResponse = false;
         return response;
