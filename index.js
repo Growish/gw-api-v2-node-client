@@ -75,6 +75,9 @@ module.exports = class ApiClient {
             lock: new RestInterface(this, '/users/{0}/lock'),
             suspend: new RestInterface(this, '/users/{0}/suspend')
         }
+        this.Pisp = {
+            onboarding: new RestInterface(this, '/pisp/onboarding/{0}')
+        }
         this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}', null, '/users/{0}/ubo-declarations');
         this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
         this.SendUBODeclaration = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/rpc-send');
