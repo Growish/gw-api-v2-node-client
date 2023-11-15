@@ -43,6 +43,7 @@ module.exports = class ApiClient {
         this.options = {
             debug: false,
             fullResponse: true,
+            includePaymentInstitutionId: false,
             baseURL: (env.toLowerCase() === 'production' ? baseURLProd : baseURLDev).replace('{{domain}}', domain),
             ...options};
 
@@ -141,7 +142,7 @@ module.exports = class ApiClient {
             const url = me.options.baseURL + endpoint;
 
             const axiosRequestPayload = {
-                headers: me._getHeaders(!isPublic),
+                headers: me._getHeaders(!isPublic, me.options.includePaymentInstitutionId),
                 url,
                 method,
                 data: payload ? payload : {},
@@ -189,13 +190,17 @@ module.exports = class ApiClient {
 
     };
 
-    _getHeaders(privateHeaders = false) {
+    _getHeaders(privateHeaders = false, includePaymentInstitutionId = false) {
 
         const headers = {};
 
         headers['Content-Type'] = 'application/json';
 
         headers['timestamp'] = (Math.floor(new Date().getTime() / 1000) - 10).toString();
+
+        if (includePaymentInstitutionId) {
+            headers['x-include-payment-institution-id'] = true;
+        }
 
         return headers;
 

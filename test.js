@@ -6,7 +6,7 @@ const apiClient = new ApiClient(
     process.env.ENV,
     process.env.DOMAIN,
     process.env.BA_USER,
-    process.env.BA_PASSWORD, {debug: false});
+    process.env.BA_PASSWORD, {debug: false, includePaymentInstitutionId: true});
 
 const wait = async time => new Promise(resolve => setTimeout(resolve, time));
 
@@ -189,12 +189,9 @@ async function run() {
 
     // TEST: PISP ONBOARDING FLOWPAY
 
-    const result = await apiClient.Pisp.onboarding.create(['flowpay'], {
-        legalUserId: '615487e47f2c0e3792bac987',
-        returnURL: 'https://dev.scuolapay.it'
-    }, {forceOnboarding: true});
+    const result = await apiClient.Users.read('615487e47f2c0e3792bac987');
 
-    console.log('pisp onboard response', result.data.redirectURL);
+    console.log('legal user data', result.data);
 
 };
 
