@@ -128,7 +128,7 @@ module.exports = class ApiClient {
             HostedSaveCards: new RestInterface(this, '/cards/hosted-save-cards')
         };
 
-        this.TaxResidence = new RestInterface(this, 'users/me/tax-residence');
+        this.TaxResidence = new RestInterface(this, '/users/me/tax-residence');
 
     };
 
