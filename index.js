@@ -119,6 +119,7 @@ module.exports = class ApiClient {
         this.GeneratedCardLock = new RestInterface(this, '/generated-cards/{0}/lock');
         this.GeneratedCardLimits = new RestInterface(this, null, null, '/generated-cards/{0}/limits');
         this.GeneratedCardConvert = new RestInterface(this, null, null, '/generated-cards/{0}/convert');
+        this.GeneratedCardActivate = new RestInterface(this, null, null, '/generated-cards/{0}/activate');
 
         this.Tools = {
             CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee'),
