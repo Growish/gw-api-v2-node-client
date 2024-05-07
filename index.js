@@ -79,7 +79,8 @@ module.exports = class ApiClient {
         this.Pisp = {
             onboarding: new RestInterface(this, '/pisp/onboarding/{0}'),
             checkout: new RestInterface(this, '/pisp/checkout/{0}','/pisp/transactions/{0}/legalUser/{1}/checkout/{2}'),
-            pagopa: new RestInterface(this, '/pisp/checkout/pagopa/flowpay')
+            pagopa: new RestInterface(this, '/pisp/checkout/pagopa/flowpay'),
+            receipt: new RestInterface(this, '/pisp/transactions/receipt/flowpay')
         }
         this.UBODeclarations = new RestInterface(this, '/users/{0}/ubo-declarations', '/users/{0}/ubo-declarations/{1}', null, '/users/{0}/ubo-declarations');
         this.UBO = new RestInterface(this, '/users/{0}/ubo-declarations/{1}/ubos', '/users/{0}/ubo-declarations/{1}/ubos/{2}');
