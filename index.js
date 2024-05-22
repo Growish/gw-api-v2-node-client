@@ -70,7 +70,8 @@ module.exports = class ApiClient {
             Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
         };
         this.UserLiveness = {
-            start: new RestInterface(this, '/rpc-start-liveness/{0}')
+            start: new RestInterface(this, '/rpc-start-liveness/{0}'),
+            getDocumentUrl: new RestInterface(this, null, '/rpc-get-liveness-document-url/{0}')
         };
         this.UserState = {
             lock: new RestInterface(this, '/users/{0}/lock'),
