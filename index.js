@@ -71,7 +71,7 @@ module.exports = class ApiClient {
         };
         this.UserLiveness = {
             start: new RestInterface(this, '/rpc-start-liveness/{0}'),
-            getDocumentUrl: new RestInterface(this, null, '/rpc-get-liveness-document-url/{0}')
+            document: new RestInterface(this, null, '/rpc-get-liveness-document/{0}')
         };
         this.UserState = {
             lock: new RestInterface(this, '/users/{0}/lock'),
