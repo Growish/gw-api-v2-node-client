@@ -139,9 +139,8 @@ module.exports = class ApiClient {
 
         this.TaxResidence = new RestInterface(this, '/users/me/tax-residence');
 
-        this.ScaWallets = new RestInterface(this, '/sca/sca-wallets/save', null, null, null, '/sca/sca-wallets/delete/{0}');
+        this.ScaWallets = new RestInterface(this, '/sca/sca-wallets/save', null, '/sca/sca-wallets/reset-pin/{0}', null, '/sca/sca-wallets/delete/{0}');
         this.ScaOauthToken = new RestInterface(this, '/sca/oauth/token');
-        this.ScaPin = new RestInterface(this, null, null, '/sca/sca-wallets/reset-pin/{0}'); 
 
     };
 
