@@ -131,7 +131,11 @@ module.exports = class ApiClient {
         this.Tools = {
             CalcTransactionFee: new RestInterface(this, null, '/tools/rpc-calc-transaction-fee'),
             ShorUrl: new RestInterface(this, "/tools/rpc-short-url"),
-            SimulateTreezorPayin: new RestInterface(this, '/tools/simulate-treezor-payin')
+            // legacy method, in order to receive settled transaction the amount must end with 1.25 es: 11.25, 31.25
+            // use new method for simulation of normal and instant bankwire
+            SimulateTreezorPayin: new RestInterface(this, '/tools/simulate-treezor-payin'),
+            SimulateTreezorPayinBankWire: new RestInterface(this, '/tools/simulate-treezor-payin-bankwire'),
+            SimulateTreezorInstantPayinBankWire: new RestInterface(this, '/tools/simulate-treezor-instant-payin-bankwire')
         };
 
         this.Cards = {
