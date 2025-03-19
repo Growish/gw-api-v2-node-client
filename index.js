@@ -147,6 +147,7 @@ module.exports = class ApiClient {
 
         this.ScaWallets = new RestInterface(this, '/sca/sca-wallets/save', null, '/sca/sca-wallets/reset-pin/{0}', null, '/sca/sca-wallets/delete/{0}');
         this.ScaOauthToken = new RestInterface(this, '/sca/oauth/token');
+        this.ScaWalletSwap = new RestInterface(this, '/sca/sca-wallets/swap/{0}');
 
     };
 
