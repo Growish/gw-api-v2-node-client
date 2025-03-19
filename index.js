@@ -136,7 +136,8 @@ module.exports = class ApiClient {
             // use new method for simulation of normal and instant bankwire
             SimulateTreezorPayin: new RestInterface(this, '/tools/simulate-treezor-payin'),
             SimulateTreezorPayinBankWire: new RestInterface(this, '/tools/simulate-treezor-payin-bankwire'),
-            SimulateTreezorInstantPayinBankWire: new RestInterface(this, '/tools/simulate-treezor-instant-payin-bankwire')
+            SimulateTreezorInstantPayinBankWire: new RestInterface(this, '/tools/simulate-treezor-instant-payin-bankwire'),
+            SimulateTreezorCardTransaction: new RestInterface(this, '/tools/simulate-treezor-card-transaction')
         };
 
         this.Cards = {
@@ -148,6 +149,8 @@ module.exports = class ApiClient {
         this.ScaWallets = new RestInterface(this, '/sca/sca-wallets/save', null, '/sca/sca-wallets/reset-pin/{0}', null, '/sca/sca-wallets/delete/{0}');
         this.ScaOauthToken = new RestInterface(this, '/sca/oauth/token');
         this.ScaWalletSwap = new RestInterface(this, '/sca/sca-wallets/swap/{0}');
+
+        this.CardTransactions = new RestInterface(this, null, '/card-transactions/{0}');
 
     };
 
