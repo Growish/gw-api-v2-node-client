@@ -154,6 +154,8 @@ module.exports = class ApiClient {
 
         this.CardTransactionAuthRequest = new RestInterface(this, null, null, '/card-transaction-auth-request/{0}');
 
+        this.Recipients = new RestInterface(this, '/recipients', '/recipients/{0}');
+
     };
 
 
