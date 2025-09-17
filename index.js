@@ -156,6 +156,8 @@ module.exports = class ApiClient {
 
         this.Recipients = new RestInterface(this, '/recipients', '/recipients/{0}');
 
+        this.ValidateBankAccount = new RestInterface(this, '/bank-accounts/validate');
+
     };
 
 
