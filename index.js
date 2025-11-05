@@ -55,7 +55,7 @@ module.exports = class ApiClient {
 
         this.Users = (new RestInterface(this, '/users', '/users/{0}', '/users/{0}', '/users', '/users/{0}'));
         this.UsersByEmail = new RestInterface(this, null, '/rpc-get-user-by-email');
-        this.UserPersonalWallet = (new RestInterface(this, null, '/users/{0}/get-personal-wallet'));
+        this.UserPersonalWallet = (new RestInterface(this, null, '/users/{0}/get-personal-wallet', null, '/users/{0}/get-multiple-wallets'));
         this.UserWallets = (new RestInterface(this, null, null,null,'/users/{0}/wallets'));
         this.UsersWalletsContributed = (new RestInterface(this, null, null,null,'/users/{0}/rpc-get-wallets-contributed'));
         this.UserCards = (new RestInterface(this, null, null,null,'/users/{0}/cards'));
