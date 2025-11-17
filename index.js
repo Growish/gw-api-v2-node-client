@@ -158,6 +158,7 @@ module.exports = class ApiClient {
         this.Recipients = new RestInterface(this, '/recipients', '/recipients/{0}');
 
         this.ValidateBankAccount = new RestInterface(this, '/bank-accounts/validate');
+        this.userDistributionCountry = new RestInterface(this, null, null, null, null, '/users/{0}/update-treezor-distribution-country');
 
     };
 
