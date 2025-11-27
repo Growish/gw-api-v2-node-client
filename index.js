@@ -159,6 +159,7 @@ module.exports = class ApiClient {
 
         this.ValidateBankAccount = new RestInterface(this, '/bank-accounts/validate');
         this.userDistributionCountry = new RestInterface(this, null, null, '/users/{0}/update-treezor-distribution-country');
+        this.activateWallet = new RestInterface(this, null, null, '/users/me/activate-wallet');
 
     };
 
