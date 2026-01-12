@@ -69,6 +69,8 @@ module.exports = class ApiClient {
             Documents: new RestInterface(this, null, null, null, '/users/{0}/kyc-documents'),
             Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
         };
+        this.UsersScaEnrollment = (new RestInterface(this, '/users/{0}/sca-enrollment'));
+        this.UsersChangeCategory = (new RestInterface(this, null, null, '/users/{0}/change-user-category'));
         this.UserLiveness = {
             start: new RestInterface(this, '/rpc-start-liveness/{0}'),
             document: new RestInterface(this, null, '/rpc-get-liveness-document/{0}')
