@@ -153,7 +153,7 @@ module.exports = class ApiClient {
 
         this.ScaWallets = new RestInterface(this, '/sca/sca-wallets/save', null, '/sca/sca-wallets/reset-pin/{0}', null, '/sca/sca-wallets/delete/{0}');
         this.ScaWalletSwap = new RestInterface(this, '/sca/sca-wallets/swap/{0}');
-        this.UsersScaEnrollment = new RestInterface(this, '/users/{0}/sca-enrollment');
+        this.TreezorScaEnrollment = new RestInterface(this, '/sca/{0}/enrollment');
         this.ScaOauthToken = new RestInterface(this, '/sca/oauth/token');
         this.ScaWalletSwap = new RestInterface(this, '/sca/sca-wallets/swap/{0}');
         this.ScaWalletReset = new RestInterface(this, '/sca/sca-wallets/reset');
