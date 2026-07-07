@@ -98,9 +98,12 @@ module.exports = class ApiClient {
             BankWire: new RestInterface(this, '/payins/bankwire'),
             CC: new RestInterface(this, '/payins/cc'),
             CCDirect: new RestInterface(this, '/payins/cc-direct'),
+            CCDirectV2: new RestInterface(this, '/payins/cc-direct-v2'),
             DirectDebit: new RestInterface(this, '/payins/direct-debit'),
             Generic: new RestInterface(this, '/payins/generic')
         };
+
+        this.TopupCards = new RestInterface(this, '/topup-cards', '/topup-cards/{0}', null, '/topup-cards/{0}', '/topup-cards/{0}/{1}');
 
         this.Payouts = {
             BankWires: new RestInterface(this, '/payouts/bankwire'),
@@ -186,7 +189,7 @@ module.exports = class ApiClient {
                 url,
                 method,
                 data: payload ? payload : {},
-                timeout: 15000
+                timeout: 30000
             };
 
             if(!isPublic)
