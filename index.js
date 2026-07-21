@@ -67,7 +67,8 @@ module.exports = class ApiClient {
             //**** New methods
             SendDocumentByLink: new RestInterface(this, '/rpc-send-kyb-document-by-link'),
             Documents: new RestInterface(this, null, null, null, '/users/{0}/kyc-documents'),
-            Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}')
+            Document: new RestInterface(this, null, '/users/{0}/kyc-documents/{1}'),
+            Status: new RestInterface(this, null, '/users/{0}/kyc')
         };
         this.UsersScaEnrollment = (new RestInterface(this, '/users/{0}/sca-enrollment'));
         this.UsersChangeCategory = (new RestInterface(this, null, null, '/users/{0}/change-user-category'));
