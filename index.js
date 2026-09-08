@@ -100,6 +100,7 @@ module.exports = class ApiClient {
             CC: new RestInterface(this, '/payins/cc'),
             CCDirect: new RestInterface(this, '/payins/cc-direct'),
             CCDirectV2: new RestInterface(this, '/payins/cc-direct-v2'),
+            CCDirectNewCard: new RestInterface(this, '/payins/cc-direct-new-card', '/payins/cc-direct-new-card/transaction'),
             DirectDebit: new RestInterface(this, '/payins/direct-debit'),
             Generic: new RestInterface(this, '/payins/generic')
         };
