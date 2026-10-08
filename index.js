@@ -74,7 +74,7 @@ module.exports = class ApiClient {
         this.UsersChangeCategory = (new RestInterface(this, null, null, '/users/{0}/change-user-category'));
         this.UserLiveness = {
             start: new RestInterface(this, '/rpc-start-liveness/{0}'),
-            get: new RestInterface(this, '/rpc-get-liveness/{0}'),
+            get: new RestInterface(this, null, '/rpc-get-liveness/{0}'),
             document: new RestInterface(this, null, '/rpc-get-liveness-document/{0}'),
         };
         this.UserState = {
